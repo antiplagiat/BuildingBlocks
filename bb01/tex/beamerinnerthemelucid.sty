@@ -1,0 +1,28 @@
+\defbeamertemplate*{title page}{lucid}
+{ 
+  \vfill
+    {\centering
+      \usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle
+      \par
+    }
+    \vskip1cm%
+    {\centering
+      \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle
+      \par
+    }
+  \vfill
+}
+
+% Делает булеты списка квадратными
+% https://tex.stackexchange.com/questions/93874/where-can-i-find-a-list-of-itemize-bullet-shapes-in-latex-beamer
+\setbeamertemplate{itemize items}[square]
+\setbeamertemplate{itemize subitem}[default]
+
+%\setbeamertemplate{itemize/enumerate body begin}{\large}
+\setbeamertemplate{itemize/enumerate subbody begin}{\normalsize}
+%\setbeamertemplate{itemize/enumerate subsubbody begin}{\huge}
+
+\setbeamercovered{transparent=5}
+
+
+
