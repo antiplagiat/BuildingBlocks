@@ -1,0 +1,60 @@
+% Убирает панель управления внизу
+\setbeamertemplate{navigation symbols}{}
+
+\RequirePackage{tikz}
+
+\newlength{\marginedPaperWidth}{\paperwidth - 0.0cm}
+
+% Заголовки страниц
+% Frame title
+\defbeamertemplate*{frametitle}{lucid}[1][]{
+  %\vskip0.25cm%
+  \begin{columns}[t]
+  \begin{column}[c]{0.5\paperwidth}
+    \begin{beamercolorbox}[wd=\paperwidth,ht=1.2cm]{frametitle} 
+    \begin{tikzpicture}
+    \useasboundingbox(0,0) rectangle(\the\paperwidth,1.2);
+    {\usebeamercolor[fg]{frametitle-left}}
+    \fill[color=frametitle-left.fg] (1.2,0) rectangle(\the\marginedPaperWidth,1.2);
+     \ifx\insertframesubtitle\@empty%
+        {\node[anchor=west] at (1.3,0.61){\usebeamerfont{frametitle}\insertframetitle};}
+        \else%
+        {\node[anchor= west] at (1.2,0.81){\usebeamerfont{frametitle}\insertframetitle};%
+         \node[anchor= west] at (1.4,0.25){\usebeamerfont{framesubtitle}-\, \insertframesubtitle};}%
+        \fi
+    \end{tikzpicture}
+  %
+  \end{beamercolorbox}
+  \end{column}
+  \begin{column}[t]{0.38\paperwidth}
+  \hfill%
+  %BuildingBlocks
+  {\small\bf\textcolor{bb-green}{Building}\textcolor{ap-b}{Blocks}}
+  \end{column}
+  \begin{column}[c]{0.10\paperwidth}
+    \includegraphics[height=1.6cm, right]{logo/bb1.png}%
+  \end{column}
+  \end{columns}
+}
+
+\newcommand{\fbseries}{\unskip\setBold\aftergroup\unsetBold\aftergroup\ignorespaces}
+\makeatletter
+\newcommand{\setBoldness}[1]{\def\fake@bold{#1}}
+\makeatother
+
+\def\logo-bb{%
+  \includegraphics[width=0.1\paperwidth]{logo/bb1.png}%
+}
+
+\setbeamertemplate{footline}{%
+  \begin{minipage}[t]{0.5\paperwidth}
+    \begin{beamercolorbox}[wd=3cm, ht = 1cm]{page number in head/foot}
+      \ifnum\thepage>1\relax%
+        \vskip0.2cm%
+        \hskip0.3cm%
+        \insertpagenumber\,/\,\insertpresentationendpage\kern1em\vskip2pt
+        \hfill
+      \fi
+    \end{beamercolorbox}
+  \end{minipage}
+}
